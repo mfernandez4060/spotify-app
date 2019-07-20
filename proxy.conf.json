@@ -1,0 +1,14 @@
+{
+  "/api/v1/*": {
+  "target": "https://spotifyservice.herokuapp.com",
+  "secure": false,
+  "logLevel": "debug",
+  "changeOrigin": true
+  },
+  "/v1/*": {
+    "target": "https://api.spotify.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+    }
+}

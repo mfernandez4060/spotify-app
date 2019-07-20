@@ -1,0 +1,4 @@
+curl -X POST -H "Authorization: Basic ZDFhOTA2YjFhZmZjNGIyZDliZGM5MDgxNmNiNjJlNmU6NjVkY2ZkZWQ5MGJlNDcxYTk0NjU1YmQwODM0N2UzMTI=" -d grant_type=client_credentials https://accounts.spotify.com/api/token
+
+
+curl -X "GET" "https://api.spotify.com/v1/browse/new-releases?limit=50" -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer BQBUajE_jG5D2A6IBKzLjSZ2GO0Pu6vZtMpbM-dBeYDAokjLbcudQJ2esVHmwuKiP_eiLdrFZuoEnd-ZGWA"
