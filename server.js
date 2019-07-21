@@ -4,7 +4,7 @@ const path = require('path');
 
 const app = express();
 
-// Serve only the static files form the angularapp directory
+// Serve only the static files form the spotiapp directory
 app.use(express.static(__dirname + '/spotiapp'));
 
 app.get('/*', function(req,res) {
