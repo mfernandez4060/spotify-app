@@ -16,7 +16,7 @@ export class SpotifyService {
   }
 
   getQuery(query: string) {
-    const url = `/v1/${query}`;
+    const url = `https://api.spotify.com/v1/${query}`;
     // tslint:disable-next-line: max-line-length
     const headers = new HttpHeaders({ Authorization: `'Bearer ${this.token}'` });
 
@@ -24,7 +24,7 @@ export class SpotifyService {
   }
 
   getToken() {
-    const url = `/api/v1/token`;
+    const url = `https://spotifyservice.herokuapp.com/api/v1/token`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
