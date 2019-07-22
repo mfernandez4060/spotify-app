@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,37 +10,20 @@ export class SpotifyService {
 
   token: any;
   tokenResponse: any;
-
+  contentHeaders = new Headers();
+  
   constructor(private http: HttpClient) {
-
+    this.contentHeaders.append('Accept', 'application/json');
+    this.contentHeaders.append('Content-Type', 'application/json');
+    
   }
 
   getQuery(query: string) {
-    const url = `/v1/${query}`;
-    // tslint:disable-next-line: max-line-length
-    const headers = new HttpHeaders({ Authorization: `'Bearer ${this.token}'` });
 
-    return this.http.get(url, { headers });
-  }
+    let params = new HttpParams();
+    const url = `/api/v1/proxy?urlRequest=${btoa(query)}`;
 
-  getToken() {
-    const url = `/api/v1/token`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-
-    // tslint:disable-next-line: max-line-length
-    this.http.post(url, {
-      "clientId": "d1a906b1affc4b2d9bdc90816cb62e6e",
-      "clientSecret": "65dcfded90be471a94655bd08347e312"
-    }, httpOptions).subscribe((data: any) => {
-      this.tokenResponse = data;
-      this.token = data.accessToken;
-    });
-
-    return this.token;
+    return this.http.get(url);
   }
 
   getNewReleases() {

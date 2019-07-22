@@ -10,10 +10,9 @@ export class HomeComponent implements OnInit {
   nuevasCanciones: any[] = [];
   loading: boolean;
   error: boolean;
-  errorstr: string
+  errorstr: string;
 
   constructor(private spotify: SpotifyService) {
-    if (!this.nuevasCanciones) { this.spotify.getToken(); }
     this.loading = true;
     this.error = false;
 
@@ -25,12 +24,8 @@ export class HomeComponent implements OnInit {
         this.nuevasCanciones = data;
         this.loading = false;
       }, (error) => {
-        this.spotify.getToken();
-        if (this.errorstr === 'Invalid access token'){
-          this.errorstr = error.error.error.message;
-        }
+        this.errorstr = error.error.error.message;
         this.loading = true;
-        this.ngOnInit();
       });
   }
 }
